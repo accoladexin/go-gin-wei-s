@@ -4,7 +4,8 @@ FROM golang:1.24-alpine AS builder
 
 # 设置容器内的当前工作目录为 /app
 WORKDIR /app
-
+# --- 关键：添加下面这一行 ---
+ENV GOPROXY=https://goproxy.cn,direct
 # 先把依赖管理文件复制到容器中
 # 这样做是为了利用 Docker 的镜像层缓存：只要 go.mod/sum 没变，就不需要重新下载依赖
 COPY go.mod go.sum ./
