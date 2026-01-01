@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package order;
+
+option go_package = "go-shop/order-service/proto;orderpb";
+
+service OrderService {
+    rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
+}
+
+message CreateOrderRequest {
+    int64 user_id = 1;
+    int64 product_id = 2;
+}
+
+message CreateOrderResponse {
+    int64 order_id = 1;
+    string user_name = 2;
+    string product_name = 3;
+    double price = 4;
+}

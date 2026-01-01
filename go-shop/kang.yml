@@ -1,0 +1,9 @@
+_format_version: "3.0"
+
+services:
+  - name: order-service
+    url: http://order-service:8002
+    routes:
+      - name: order-route
+        paths:
+          - /orders
