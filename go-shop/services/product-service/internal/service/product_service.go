@@ -3,26 +3,20 @@ package service
 import (
 	"context"
 	productpb "go-shop/product-service/proto"
-	"log"
 )
 
 type ProductService struct {
 	productpb.UnimplementedProductServiceServer
-	userClient *UserClient
 }
 
-func NewProductService(userClient *UserClient) *ProductService {
-	return &ProductService{
-		userClient: userClient,
-	}
+func NewProductService() *ProductService {
+	return &ProductService{}
 }
 
 func (s *ProductService) GetProduct(
 	ctx context.Context,
 	req *productpb.GetProductRequest,
 ) (*productpb.GetProductResponse, error) {
-	user, _ := s.userClient.GetUser(ctx, 1)
-	log.Println("get user from user-service:", user.Name)
 
 	return &productpb.GetProductResponse{
 		Id:    req.Id,

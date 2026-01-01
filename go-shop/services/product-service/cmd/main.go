@@ -15,10 +15,10 @@ func main() {
 	grpcServer := grpc.NewServer()
 
 	// 2️⃣ 创建 gRPC Client（依赖）
-	userClient := service.NewUserClient("localhost:9000")
+	//userClient := service.NewUserClient("localhost:9000")
 
 	// 3️⃣ 创建 Product Service（注入依赖）
-	productSvc := service.NewProductService(userClient)
+	productSvc := service.NewProductService()
 
 	// 4️⃣ 注册服务
 	productpb.RegisterProductServiceServer(grpcServer, productSvc)
